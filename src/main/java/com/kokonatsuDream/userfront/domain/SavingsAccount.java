@@ -1,6 +1,7 @@
 package com.kokonatsuDream.userfront.domain;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class SavingsAccount {
 	private Long id;

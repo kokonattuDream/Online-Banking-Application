@@ -1,5 +1,7 @@
 package com.kokonatsuDream.userfront.domain;
 
+import java.util.List;
+
 public class User {
 	private Long userId;
 	private String username;

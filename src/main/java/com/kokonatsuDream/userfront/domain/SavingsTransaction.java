@@ -1,6 +1,5 @@
 package com.kokonatsuDream.userfront.domain;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 
 import javax.persistence.Entity;

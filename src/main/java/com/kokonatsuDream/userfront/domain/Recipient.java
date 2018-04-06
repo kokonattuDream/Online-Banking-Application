@@ -1,6 +1,5 @@
 package com.kokonatsuDream.userfront.domain;
 
-import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

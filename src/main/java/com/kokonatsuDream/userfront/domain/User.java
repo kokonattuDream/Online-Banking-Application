@@ -1,6 +1,6 @@
 package com.kokonatsuDream.userfront.domain;
 
-import java.io.Serializable;
+
 import java.util.List;
 
 import javax.persistence.CascadeType;

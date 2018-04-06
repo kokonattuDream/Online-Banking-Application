@@ -1,10 +1,20 @@
 package com.kokonatsuDream.userfront.domain;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.xml.crypto.Data;
 
+@Entity
 public class PrimaryTransaction {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private Data date;
 	private String description;
@@ -12,6 +22,9 @@ public class PrimaryTransaction {
 	private String status;
 	private double amount;
 	private BigDecimal availableBalance;
+	
+	@ManyToOne
+	@JoinColumn(name = "primary_account_id")
 	private PrimaryAccount primaryAccount;
 	
 	

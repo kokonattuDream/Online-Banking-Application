@@ -2,6 +2,7 @@ package com.kokonatsuDream.userfront.domain;
 
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,7 +17,7 @@ public class PrimaryTransaction {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private Data date;
+	private Date date;
 	private String description;
 	private String type;
 	private String status;
@@ -33,7 +34,7 @@ public class PrimaryTransaction {
 	
 
 
-	public PrimaryTransaction(Data date, String description, String type, String status, double amount,
+	public PrimaryTransaction(Date date, String description, String type, String status, double amount,
 			BigDecimal availableBalance, PrimaryAccount primaryAccount) {
 		super();
 		this.date = date;
@@ -53,11 +54,11 @@ public class PrimaryTransaction {
 		this.id = id;
 	}
 
-	public Data getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(Data date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 

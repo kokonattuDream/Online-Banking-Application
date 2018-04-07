@@ -1,6 +1,7 @@
 package com.kokonatsuDream.userfront.domain;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,14 +9,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.xml.crypto.Data;
 
 @Entity
 public class SavingsTransaction {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private Data date;
+	private Date date;
 	private String description;
 	private String type;
 	private String status;
@@ -37,11 +37,11 @@ public class SavingsTransaction {
 		this.id = id;
 	}
 
-	public Data getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(Data date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 

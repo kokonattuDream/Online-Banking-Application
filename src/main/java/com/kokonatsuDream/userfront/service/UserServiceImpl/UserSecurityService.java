@@ -1,14 +1,18 @@
-package com.kokonatsuDream.userfront.service;
+package com.kokonatsuDream.userfront.service.UserServiceImpl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import com.kokonatsuDream.userfront.Dao.UserDao;
 import com.kokonatsuDream.userfront.domain.User;
+
+@Service
 public class UserSecurityService implements UserDetailsService {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(UserSecurityService.class);

@@ -14,7 +14,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import com.kokonatsuDream.userfront.service.UserSecurityService;
+import com.kokonatsuDream.userfront.service.UserServiceImpl.UserSecurityService;
 
 @Configuration
 @EnableWebSecurity

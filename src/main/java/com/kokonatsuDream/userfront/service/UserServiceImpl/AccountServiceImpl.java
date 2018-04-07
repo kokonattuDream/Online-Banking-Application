@@ -3,6 +3,7 @@ package com.kokonatsuDream.userfront.service.UserServiceImpl;
 import java.math.BigDecimal;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.kokonatsuDream.userfront.Dao.PrimaryAccountDao;
 import com.kokonatsuDream.userfront.Dao.SavingsAccountDao;
@@ -11,6 +12,7 @@ import com.kokonatsuDream.userfront.domain.SavingsAccount;
 import com.kokonatsuDream.userfront.service.AccountService;
 import com.kokonatsuDream.userfront.service.UserService;
 
+@Service
 public class AccountServiceImpl implements AccountService {
 
 	private static int nextAccountNumber = 1314142;

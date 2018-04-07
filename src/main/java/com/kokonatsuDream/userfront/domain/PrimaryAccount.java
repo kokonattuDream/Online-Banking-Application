@@ -26,6 +26,10 @@ public class PrimaryAccount {
 	@JsonIgnore
 	private List<PrimaryTransaction> primaryTransactionList;
 
+	
+	public PrimaryAccount() {
+	}
+
 	public Long getId() {
 		return id;
 	}

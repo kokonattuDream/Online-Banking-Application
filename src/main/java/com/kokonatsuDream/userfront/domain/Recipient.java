@@ -26,6 +26,11 @@ public class Recipient {
 	@JsonIgnore
 	private User user;
 
+	
+	public Recipient() {
+		
+	}
+
 	public Long getId() {
 		return id;
 	}

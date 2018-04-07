@@ -24,6 +24,11 @@ public class Appointment {
 	@JoinColumn(name = "user_id")
 	private User user;
 
+	
+	public Appointment() {
+		
+	}
+
 	public Long getId() {
 		return id;
 	}

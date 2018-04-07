@@ -24,6 +24,11 @@ public class SavingsAccount {
 	@JsonIgnore
 	private List<SavingsTransaction> savingsTransactionList;
 
+	
+	public SavingsAccount() {
+	
+	}
+
 	public Long getId() {
 		return id;
 	}

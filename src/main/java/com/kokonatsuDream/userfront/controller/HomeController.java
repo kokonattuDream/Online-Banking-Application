@@ -10,13 +10,18 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.kokonatsuDream.userfront.Dao.RoleDao;
 import com.kokonatsuDream.userfront.domain.User;
+import com.kokonatsuDream.userfront.domain.security.UserRole;
 import com.kokonatsuDream.userfront.service.UserService;
 
 @Controller
 public class HomeController {
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	RoleDao roleDao;
 	
 	@RequestMapping("/")
 	public String home() {
@@ -51,8 +56,11 @@ public class HomeController {
 			
 			return "signup";
 		} else {
-			//userService.save(user);
-			userService.create(user);
+			Set<UserRole> userRoles = new HashSet<>();
+			
+			userRoles.add(new UserRole(user, roleDao.findByName("USER")));
+			
+			userService.createUser(user, userRoles);
 			
 			return "redirect:/";
 		}

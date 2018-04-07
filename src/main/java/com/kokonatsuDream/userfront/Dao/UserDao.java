@@ -6,6 +6,6 @@ import com.kokonatsuDream.userfront.domain.User;
 
 @Repository
 public interface UserDao extends CrudRepository<User, Long>{
-	User findByUserName(String username);
+	User findByUsername(String username);
 	User findByEmail(String email);
 }

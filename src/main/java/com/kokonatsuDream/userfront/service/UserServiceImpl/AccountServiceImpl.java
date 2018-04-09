@@ -15,6 +15,7 @@ import com.kokonatsuDream.userfront.domain.SavingsAccount;
 import com.kokonatsuDream.userfront.domain.SavingsTransaction;
 import com.kokonatsuDream.userfront.domain.User;
 import com.kokonatsuDream.userfront.service.AccountService;
+import com.kokonatsuDream.userfront.service.TransactionService;
 import com.kokonatsuDream.userfront.service.UserService;
 
 @Service
@@ -27,6 +28,9 @@ public class AccountServiceImpl implements AccountService {
 	private SavingsAccountDao savingsAccountDao;
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private TransactionService transactionService;
 	
 	@Override
 	public PrimaryAccount createPrimaryAccount() {
@@ -66,7 +70,9 @@ public class AccountServiceImpl implements AccountService {
 			Date date = new Date();
 			
 			PrimaryTransaction primaryTransaction = new PrimaryTransaction(date, "Deposit to Primary Account", "Account", "Finished", amount, primaryAccount.getAccountBalance(), primaryAccount);
-		
+			
+			transactionService.savePrimaryDepositTransaction(primaryTransaction);
+			
 		} else if(accountType.equalsIgnoreCase("Savings")) {
 			SavingsAccount savingsAccount = new SavingsAccount();
 			
@@ -76,6 +82,8 @@ public class AccountServiceImpl implements AccountService {
 			Date date = new Date();
 			
 			SavingsTransaction savingsTransaction = new SavingsTransaction(date, "Deposit to savings Account", "Account", "Finished", amount, savingsAccount.getAccountBalance(), savingsAccount);
+			
+			transactionService.saveSavingsDepositTransaction(savingsTransaction);
 		}
 	}
 	
@@ -91,6 +99,8 @@ public class AccountServiceImpl implements AccountService {
 			Date date = new Date();
 			
 			PrimaryTransaction primaryTransaction = new PrimaryTransaction(date, "Withdraw from Primary Account", "Account", "Finished", amount, primaryAccount.getAccountBalance(), primaryAccount);
+			
+			transactionService.savePrimaryWithdrawTransaction(primaryTransaction);
 		} else if(accountType.equalsIgnoreCase("Savings")) {
 			SavingsAccount savingsAccount = new SavingsAccount();
 			
@@ -100,6 +110,8 @@ public class AccountServiceImpl implements AccountService {
 			Date date = new Date();
 			
 			SavingsTransaction savingsTransaction = new SavingsTransaction(date, "Withdraw from savings Account", "Account", "Finished", amount, savingsAccount.getAccountBalance(), savingsAccount);
+			
+			transactionService.saveSavingsWithdrawTransaction(savingsTransaction);
 		}
 	}
 	

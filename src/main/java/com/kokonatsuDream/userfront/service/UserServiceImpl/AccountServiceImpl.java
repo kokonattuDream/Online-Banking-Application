@@ -1,6 +1,8 @@
 package com.kokonatsuDream.userfront.service.UserServiceImpl;
 
 import java.math.BigDecimal;
+import java.security.Principal;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,7 +10,10 @@ import org.springframework.stereotype.Service;
 import com.kokonatsuDream.userfront.Dao.PrimaryAccountDao;
 import com.kokonatsuDream.userfront.Dao.SavingsAccountDao;
 import com.kokonatsuDream.userfront.domain.PrimaryAccount;
+import com.kokonatsuDream.userfront.domain.PrimaryTransaction;
 import com.kokonatsuDream.userfront.domain.SavingsAccount;
+import com.kokonatsuDream.userfront.domain.SavingsTransaction;
+import com.kokonatsuDream.userfront.domain.User;
 import com.kokonatsuDream.userfront.service.AccountService;
 import com.kokonatsuDream.userfront.service.UserService;
 
@@ -49,8 +54,35 @@ public class AccountServiceImpl implements AccountService {
 		return savingsAccountDao.findByAccountNumber(savingAccount.getAccountNumber());
 	}
 	
+	public void deposit(String accountType, double amount, Principal principal) {
+		User user = userService.findByUsername(principal.getName());
+		
+		if(accountType.equalsIgnoreCase("Primary")) {
+			PrimaryAccount primaryAccount = user.getPrimaryAccount();
+			
+			primaryAccount.setAccountBalance(primaryAccount.getAccountBalance().add(new BigDecimal(amount)));
+			primaryAccountDao.save(primaryAccount);
+			
+			Date date = new Date();
+			
+			PrimaryTransaction primaryTransaction = new PrimaryTransaction(date, "Deposit to Primary Account", "Account", "Finished", amount, primaryAccount.getAccountBalance(), primaryAccount);
+		
+		} else if(accountType.equalsIgnoreCase("Savings")) {
+			SavingsAccount savingsAccount = new SavingsAccount();
+			
+			savingsAccount.setAccountBalance(savingsAccount.getAccountBalance().add(new BigDecimal(amount)));
+			savingsAccountDao.save(savingsAccount);
+			
+			Date date = new Date();
+			
+			SavingsTransaction savingsTransaction = new SavingsTransaction(date, "Deposit to savings Account", "Account", "Finished", amount, savingsAccount.getAccountBalance(), savingsAccount);
+		}
+	}
+	
 	private int accountGen() {
 		return nextAccountNumber++;
 	}
+	
+	
 
 }

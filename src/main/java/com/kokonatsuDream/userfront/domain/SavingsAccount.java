@@ -28,6 +28,18 @@ public class SavingsAccount {
 	public SavingsAccount() {
 	
 	}
+	
+	
+
+	public SavingsAccount(Long id, int accountNumber, BigDecimal accountBalance,
+			List<SavingsTransaction> savingsTransactionList) {
+		this.id = id;
+		this.accountNumber = accountNumber;
+		this.accountBalance = accountBalance;
+		this.savingsTransactionList = savingsTransactionList;
+	}
+
+
 
 	public Long getId() {
 		return id;

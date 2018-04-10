@@ -1,18 +1,23 @@
 package com.kokonatsuDream.userfront.service.UserServiceImpl;
 
 import java.math.BigDecimal;
+import java.security.Principal;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kokonatsuDream.userfront.Dao.PrimaryAccountDao;
 import com.kokonatsuDream.userfront.Dao.PrimaryTransactionDao;
+import com.kokonatsuDream.userfront.Dao.RecipientDao;
 import com.kokonatsuDream.userfront.Dao.SavingsAccountDao;
 import com.kokonatsuDream.userfront.Dao.SavingsTransactionDao;
 import com.kokonatsuDream.userfront.domain.PrimaryAccount;
 import com.kokonatsuDream.userfront.domain.PrimaryTransaction;
+import com.kokonatsuDream.userfront.domain.Recipient;
 import com.kokonatsuDream.userfront.domain.SavingsAccount;
 import com.kokonatsuDream.userfront.domain.SavingsTransaction;
 import com.kokonatsuDream.userfront.domain.User;
@@ -36,6 +41,9 @@ public class TransactionServiceImpl implements TransactionService{
 	private PrimaryAccountDao primaryAccountDao;
 	@Autowired
 	private SavingsAccountDao savingsAccountDao;
+	
+	@Autowired
+	private RecipientDao recipientDao;
 	
 	public List<PrimaryTransaction> findPrimaryTransactionList(String username){
 		
@@ -100,5 +108,31 @@ public class TransactionServiceImpl implements TransactionService{
 		} else {
 			throw new Exception("Invalid Transfer");
 		}
+	}
+
+	@Override
+	public List<Recipient> findRecipientList(Principal principal) {
+		String username = principal.getName();
+		List<Recipient> recipientList = recipientDao.findAll().stream()
+				.filter(recipient -> username.equals(recipient.getUser().getUsername()))
+				.collect(Collectors.toList());
+		
+		return recipientList;
+	}
+
+	@Override
+	public void saveRecipient(Recipient recipient) {
+		recipientDao.save(recipient);
+	}
+
+	@Override
+	public Recipient findRecipientByName(String recipientName) {
+		return recipientDao.findByname(recipientName);
+	}
+
+	@Override
+	public void deleteRecipientByName(String recipientName) {
+		recipientDao.deleteByName(recipientName);
+		
 	}
 }

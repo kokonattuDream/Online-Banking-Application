@@ -20,4 +20,5 @@ public interface UserService {
 	
 	User createUser(User user, Set<UserRole> userRoles);
 	
+	User saveUser (User user); 
 }

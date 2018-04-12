@@ -1,4 +1,4 @@
-package com.userfront.controller;
+package com.kokonatsuDream.userfront.controller;
 
 import java.security.Principal;
 import java.text.ParseException;
@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.userfront.domain.Appointment;
-import com.userfront.domain.User;
-import com.userfront.service.AppointmentService;
-import com.userfront.service.UserService;
+import com.kokonatsuDream.userfront.domain.Appointment;
+import com.kokonatsuDream.userfront.domain.User;
+import com.kokonatsuDream.userfront.service.AppointmentService;
+import com.kokonatsuDream.userfront.service.UserService;
 
 @Controller
 @RequestMapping("/appointment")

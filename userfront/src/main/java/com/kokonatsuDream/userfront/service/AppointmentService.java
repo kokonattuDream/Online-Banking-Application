@@ -1,8 +1,8 @@
-package com.kokonatsuDream.userfront.service;
+package com.userfront.service;
 
 import java.util.List;
 
-import com.kokonatsuDream.userfront.domain.Appointment;
+import com.userfront.domain.Appointment;
 
 public interface AppointmentService {
 	Appointment createAppointment(Appointment appointment);

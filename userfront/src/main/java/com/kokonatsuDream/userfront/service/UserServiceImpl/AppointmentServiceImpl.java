@@ -1,14 +1,13 @@
-package com.kokonatsuDream.userfront.service.UserServiceImpl;
+package com.userfront.service.UserServiceImpl;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.kokonatsuDream.userfront.Dao.AppointmentDao;
-import com.kokonatsuDream.userfront.domain.Appointment;
-import com.kokonatsuDream.userfront.service.AppointmentService;
+import com.userfront.dao.AppointmentDao;
+import com.userfront.domain.Appointment;
+import com.userfront.service.AppointmentService;
 
 @Service
 public class AppointmentServiceImpl implements AppointmentService {

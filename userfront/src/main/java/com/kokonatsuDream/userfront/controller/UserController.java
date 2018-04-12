@@ -1,4 +1,4 @@
-package com.kokonatsuDream.userfront.controller;
+package com.userfront.controller;
 
 import java.security.Principal;
 
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.kokonatsuDream.userfront.domain.User;
-import com.kokonatsuDream.userfront.service.UserService;
+import com.userfront.domain.User;
+import com.userfront.service.UserService;
 
 @Controller
 @RequestMapping("/user")

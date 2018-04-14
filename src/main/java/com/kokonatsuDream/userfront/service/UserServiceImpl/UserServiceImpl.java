@@ -1,5 +1,6 @@
 package com.kokonatsuDream.userfront.service.UserServiceImpl;
 
+import java.util.List;
 import java.util.Set;
 
 import org.slf4j.Logger;
@@ -101,5 +102,25 @@ public class UserServiceImpl implements UserService{
 	public User saveUser (User user) {
         return userDao.save(user);
     }
+
+	
+	public List<User> findUserList() {
+		// TODO Auto-generated method stub
+		return userDao.findAll();
+	}
+	
+	public void enableUser(String username) {
+		User user = findByUsername(username);
+		
+		user.setEnabled(true);
+		userDao.save(user);
+	}
+	
+	public void disableUser(String username) {
+		User user = findByUsername(username);
+		
+		user.setEnabled(false);
+		userDao.save(user);
+	}
 	
 }

@@ -29,3 +29,8 @@ Features:
 
  
 ![](https://github.com/kokonattuDream/OnlineBankingApplication/blob/master/img/1.jpg)
+
+
+Admin Portal: https://github.com/kokonattuDream/OnlineBankAdmin
+
+Note: Please change the database setting to a working one. 
